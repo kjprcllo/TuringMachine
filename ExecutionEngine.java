@@ -1,18 +1,15 @@
 public class ExecutionEngine {
 
     public static void step(MachineState state) {
-        // After a terminal status, require Reset before executing again
         if (isTerminal(state)) {
             return;
         }
 
-        // Guard against starting at or beyond the step limit
         if (state.steps >= state.stepLimit) {
             state.status = "LIMIT REACHED";
             return;
         }
 
-        // Check if PC fell past the final instruction without executing HALT
         if (state.pc < 0 || state.pc >= state.instructions.size()) {
             state.status = "ERROR";
             state.errorMessage = "Runtime error: Program fell past the final instruction without executing HALT.";
@@ -21,14 +18,13 @@ public class ExecutionEngine {
 
         state.status = "RUNNING";
         Instruction instr = state.instructions.get(state.pc);
-        state.steps++; // Count every executed instruction as 1 step
+        state.steps++; 
 
         switch (instr.command) {
             case "LEFT":
                 if (state.head > 0) {
                     state.head--;
                 }
-                // If already at 0, stay at 0; still counts as 1 step
                 state.pc++;
                 break;
 
@@ -55,19 +51,15 @@ public class ExecutionEngine {
                 break;
 
             case "HALT":
-                // Keep PC on HALT and show halted status
                 state.status = "HALTED";
                 break;
         }
 
-        // Check if we fell off the end immediately after advancing PC
         if (state.status.equals("RUNNING") && state.pc >= state.instructions.size()) {
             state.status = "ERROR";
             state.errorMessage = "Runtime error: Program fell past the final instruction without executing HALT.";
         }
 
-        // If the last permitted step executed HALT or caused ERROR, keep HALTED/ERROR.
-        // Only set LIMIT REACHED if the machine is still RUNNING at the limit.
         if (state.status.equals("RUNNING") && state.steps >= state.stepLimit) {
             state.status = "LIMIT REACHED";
         }
