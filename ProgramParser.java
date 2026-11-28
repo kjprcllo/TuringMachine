@@ -98,7 +98,7 @@ public class ProgramParser {
                     break;
 
                 default:
-                    throw new IllegalArgumentException("Line " + lineNum + ": Unknown command '" + cmd + "' (commands must be UPPERCASE).");
+                    throw new IllegalArgumentException("Line " + lineNum + ": Unknown command '" + cmd + "'. Valid commands are LEFT, RIGHT, WRITE, GOTO, IF, and HALT.");
             }
         }
 
