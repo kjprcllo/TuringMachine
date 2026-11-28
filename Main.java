@@ -24,7 +24,7 @@ public class Main {
 
         String inputTape = null;
         while (inputTape == null) {
-            System.out.print("Enter input tape (press Enter for empty input): ");
+            System.out.print("Enter input tape (press ENTER for empty input): ");
             String rawInput = scanner.nextLine();
             try {
                 ProgramParser.validateInputTape(rawInput);

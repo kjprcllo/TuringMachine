@@ -1,0 +1,9 @@
+loop: IF _ GOTO done
+IF 0 GOTO write1
+WRITE 0
+GOTO advance
+write1: WRITE 1
+advance: RIGHT
+GOTO loop
+done: LEFT
+HALT
