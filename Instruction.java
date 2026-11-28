@@ -1,10 +1,10 @@
-public class Instructions {
+public class Instruction {
     public final int lineNumber;
     public final String command;
     public final char symbol;
     public final String targetLabel;
 
-    public Instructions(int lineNumber, String command, char symbol, String targetLabel) {
+    public Instruction(int lineNumber, String command, char symbol, String targetLabel) {
         this.lineNumber = lineNumber;
         this.command = command;
         this.symbol = symbol;
