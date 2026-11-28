@@ -44,13 +44,13 @@ public class Main {
             try {
                 int val = Integer.parseInt(limitStr);
                 if (val <= 0 || val > 10000) {
-                    System.out.println("Step limit must be between 1 and 10000.");
+                    System.out.println("Invalid step limit: value must be between 1 and 10000.");
                 } else {
                     stepLimit = val;
                     break;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid number. Please enter a positive integer between 1 and 10000.");
+                System.out.println("Invalid step limit: '" + limitStr + "' is not a valid integer (must be 1-10000).");
             }
         }
 

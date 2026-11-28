@@ -1,0 +1,2 @@
+GOTO none_label
+HALT
