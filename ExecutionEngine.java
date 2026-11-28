@@ -22,9 +22,12 @@ public class ExecutionEngine {
 
         switch (instr.command) {
             case "LEFT":
-                if (state.head > 0) {
-                    state.head--;
+                if (state.head == 0) {
+                    state.status = "ERROR";
+                    state.errorMessage = "Runtime Error [Line " + instr.lineNumber + "]: Cannot move LEFT past tape index 0.";
+                    return;
                 }
+                state.head--;
                 state.pc++;
                 break;
 
